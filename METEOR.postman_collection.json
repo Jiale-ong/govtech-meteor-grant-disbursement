@@ -1,0 +1,354 @@
+{
+	"info": {
+		"_postman_id": "2c2c0eb6-0cdc-4c36-bd76-d69ef370be5b",
+		"name": "METEOR",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10323513"
+	},
+	"item": [
+		{
+			"name": "api",
+			"item": [
+				{
+					"name": "Express base url",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:5000",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000"
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "api testpoint",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:5000/api/testpoint",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"testpoint"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "household",
+			"item": [
+				{
+					"name": "view all household",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:5000/api/household",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"household"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add household",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"household_type\" : \"HDB\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:5000/api/household",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"household"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get specified household details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:5000/api/household/632476c32d4db354a787749b",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"household",
+								"632476c32d4db354a787749b"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "family member",
+			"item": [
+				{
+					"name": "add young family member",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"household_id\" : \"63248f1b7bf131dcf5be1f15\",\r\n    \"family_member\" : {\r\n        \"name\" : \"Marianne\",\r\n        \"gender\" : \"Female\",\r\n        \"marital_status\" : \"Single\",\r\n        \"occupation_type\" : \"Student\",\r\n        \"annual_income\" : 0,\r\n        \"DOB\" : 27072015\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:5000/api/family_member",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"family_member"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add baby family member",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"household_id\" : \"6324920c7c91d155c9f37926\",\r\n    \"family_member\" : {\r\n        \"name\" : \"Baby Gs\",\r\n        \"gender\" : \"Female\",\r\n        \"marital_status\" : \"Single\",\r\n        \"occupation_type\" : \"Unemployed\",\r\n        \"annual_income\" : 0,\r\n        \"DOB\" : 27072022\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:5000/api/family_member",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"family_member"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add elder family member",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"household_id\" : \"63248f1b7bf131dcf5be1f15\",\r\n    \"family_member\" : {\r\n        \"name\" : \"Ah Chew\",\r\n        \"gender\" : \"Female\",\r\n        \"marital_status\" : \"Married\",\r\n        \"occupation_type\" : \"Unemployed\",\r\n        \"annual_income\" : 0,\r\n        \"DOB\" : 27071966\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:5000/api/family_member",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"family_member"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "grant",
+			"item": [
+				{
+					"name": "view qualifying households and members for student encouragement bonus",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:5000/api/grant/student_encouragement_bonus",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"grant",
+								"student_encouragement_bonus"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "view qualifying multigen scheme",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:5000/api/grant/multigenerational_scheme",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"grant",
+								"multigenerational_scheme"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "view qualifying elder bonus",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:5000/api/grant/elder_bonus",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"grant",
+								"elder_bonus"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "view qualifying baby sunshine bonus",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:5000/api/grant/baby_sunshine_bonus",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"grant",
+								"baby_sunshine_bonus"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "view qualifying yolo gst grant",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:5000/api/grant/yolo_gst_grant",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"grant",
+								"yolo_gst_grant"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
