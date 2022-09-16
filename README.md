@@ -17,8 +17,9 @@ Download node.js
 
 # Assumptions
 1. A married person may not have a spouse under the household, to allow for administrative time to add the spouse to the household in the future.
-2. For the student encouragement bonus, qualifying members need not be students, as outlined in the assessment document.
-3. For the multigenerational scheme, households only need EITHER a member less than 18 years old OR a member greater than 55 years old, as outlined in the assessment document.
-4. For the Elder bonus, a household MUST have a member ABOVE 55 years old, where subsequently members AT OR ABOVE 55 years old would qualify for this bonus.
-5. While this application is currently running locally, if this application were to be hosted, the database would be restricted to mongoDB since it was developed using mongoDB.
-6. The current application does not have delete or modify functionalities, as it is not required by the assessment document.
+2. Similarly, a person might have a spouse but may not be married, to allow for administrative flexibility.
+3. For the student encouragement bonus, qualifying members need not be students, as outlined in the assessment document.
+4. For the multigenerational scheme, households only need EITHER a member less than 18 years old OR a member greater than 55 years old, as outlined in the assessment document.
+5. For the Elder bonus, a household MUST have a member ABOVE 55 years old, where subsequently members AT OR ABOVE 55 years old would qualify for this bonus.
+6. While this application is currently running locally, if this application were to be hosted, the database would be restricted to mongoDB since it was developed using mongoDB.
+7. The current application does not have delete or modify functionalities, as it is not required by the assessment document.
