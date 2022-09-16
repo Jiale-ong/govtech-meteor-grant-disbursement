@@ -1,0 +1,3 @@
+https://mongoosejs.com/docs/
+https://www.makeuseof.com/edi-how-to-set-up-your-own-nosql-database/
+https://blog.devgenius.io/how-to-get-started-with-the-mern-stack-the-easy-way-b9758fe45956

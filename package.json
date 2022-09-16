@@ -1,0 +1,25 @@
+{
+  "name": "govtech-meteor-grant-disbursement",
+  "version": "1.0.0",
+  "description": "Repository for Govtech Meteor's coding assessment. This repo contains the code for the backend API server of a grant disbursement application.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jiale-ong/govtech-meteor-grant-disbursement.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jiale-ong/govtech-meteor-grant-disbursement/issues"
+  },
+  "homepage": "https://github.com/Jiale-ong/govtech-meteor-grant-disbursement#readme",
+  "dependencies": {
+    "dotenv": "^16.0.2",
+    "express": "^4.18.1",
+    "mongoose": "^6.6.1"
+  }
+}
