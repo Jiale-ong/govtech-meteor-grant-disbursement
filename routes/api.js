@@ -39,7 +39,7 @@ router.delete('/testpoint/:id', (req, res, next) => {
 router.get('/household', async (req, res, next) => {
     console.log("GET /api/household");
     // This will return all the data, exposing only the id and action field to the client
-    Household.find({}, 'household_type')
+    Household.find({})
         .then((data) => res.json(data))
         .catch(next);
 });
@@ -120,19 +120,131 @@ router.get('/grant/student_encouragement_bonus', async (req, res, next) => {
         let qualifying_households = []
 
         data.forEach(curr_household => {
-            curr_result = curr_household.evalStudentEncouragementBonus();
+            let curr_result = curr_household.evalStudentEncouragementBonus();
             if (curr_result) {
                 qualifying_households.push(curr_result)
             }
         });
 
-        if (curr_result) {res.json(curr_result)}
-        res.json({
+        if (qualifying_households) {
+            res.json(qualifying_households)
+        } else {
+            res.json({
             "code" : 200,
             "message" : "Success. There are no qualifying households nor members."
-        })
+        })}
         })
         .catch(next);
 });
+
+router.get('/grant/multigenerational_scheme', async (req, res, next) => {
+    console.log("GET /api/grant/multigenerational_scheme");
+    // This will return all the data, exposing only the id and action field to the client
+    Household.find({})
+        .then((data) => {
+        let qualifying_households = []
+
+        data.forEach(curr_household => {
+            let curr_result = curr_household.evalMultiGenScheme();
+            console.log(curr_household._id);
+            console.log(curr_result);
+            if (curr_result) {
+                qualifying_households.push(curr_result)
+            }
+        });
+
+        if (qualifying_households) {
+            res.json(qualifying_households)
+        } else {
+            res.json({
+            "code" : 200,
+            "message" : "Success. There are no qualifying households nor members."
+        })}
+        })
+        .catch(next);
+});
+
+router.get('/grant/elder_bonus', async (req, res, next) => {
+    console.log("GET /api/grant/elder_bonus");
+    // This will return all the data, exposing only the id and action field to the client
+    Household.find({})
+        .then((data) => {
+        let qualifying_households = []
+
+        data.forEach(curr_household => {
+            let curr_result = curr_household.evalElderBonus();
+            console.log(curr_household._id);
+            console.log(curr_result);
+            if (curr_result) {
+                qualifying_households.push(curr_result)
+            }
+        });
+
+        if (qualifying_households) {
+            res.json(qualifying_households)
+        } else {
+            res.json({
+            "code" : 200,
+            "message" : "Success. There are no qualifying households nor members."
+        })}
+        })
+        .catch(next);
+});
+
+router.get('/grant/baby_sunshine_bonus', async (req, res, next) => {
+    console.log("GET /api/grant/baby_sunshine_bonus");
+    // This will return all the data, exposing only the id and action field to the client
+    Household.find({})
+        .then((data) => {
+        let qualifying_households = []
+
+        data.forEach(curr_household => {
+            let curr_result = curr_household.evalBabySunshineGrant();
+            console.log(curr_household._id);
+            console.log(curr_result);
+            if (curr_result) {
+                qualifying_households.push(curr_result)
+            }
+        });
+
+        if (qualifying_households) {
+            res.json(qualifying_households)
+        } else {
+            res.json({
+            "code" : 200,
+            "message" : "Success. There are no qualifying households nor members."
+        })}
+        })
+        .catch(next);
+});
+
+router.get('/grant/yolo_gst_grant', async (req, res, next) => {
+    console.log("GET /api/grant/yolo_gst_grant");
+    // This will return all the data, exposing only the id and action field to the client
+    Household.find({})
+        .then((data) => {
+        let qualifying_households = []
+
+        data.forEach(curr_household => {
+            let curr_result = curr_household.evalYOLOGSTGrant();
+            console.log(curr_household._id);
+            console.log(curr_result);
+            if (curr_result) {
+                qualifying_households.push(curr_result)
+            }
+        });
+
+        if (qualifying_households) {
+            res.json(qualifying_households)
+        } else {
+            res.json({
+            "code" : 200,
+            "message" : "Success. There are no qualifying households nor members."
+        })}
+        })
+        .catch(next);
+});
+
+// End of Grant APIs
 
 module.exports = router;

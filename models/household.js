@@ -66,25 +66,103 @@ HouseholdSchema.methods.evalStudentEncouragementBonus = function evalStudentEnco
     // Now to return the household with only the qualifying members
     if (!hasStudentYoungerThan16) {return;}
     
-    doc_javascript_obj = this.toObject();
+    let doc_javascript_obj = this.toObject();
     doc_javascript_obj["qualifying_members"] = candidate_qualifying_members;
-    return doc_javascript_obj;
+    return doc_javascript_obj
 }
 
-// // Testing the db
-// const testHousehold = new Household({
-//     household_type: "HDB"
-// });
+HouseholdSchema.methods.evalMultiGenScheme = function evalMultiGenScheme() {
+    this.computeHouseholdIncome();
 
-// console.log(testHousehold.household_type);
-// console.log(testHousehold.evalStudentEncouragementBonus());
+    if (this.household_income >= 150000) {
+        console.log(this.household_income);
+        return
+    }
 
-// await testHousehold.save();
-// const households = await Household.find();
-// console.log(households);
+    let hasValidMember = false
 
-// console.log(await Household.find({ household_type: /HDB/ }));
-// // End of test db
+    this.family_members.forEach(member => {
+        member_DOB_date = parse_date(member.DOB);
+        member_age = compute_date_diff(member_DOB_date, new Date(), "year");
+
+        if (member_age < 18 || member_age > 55) {
+            hasValidMember = true
+        }
+    });
+
+    if (!hasValidMember) {
+        return
+    } else {
+    let doc_javascript_obj = this.toObject();
+    let family_members = doc_javascript_obj["family_members"].slice();
+    doc_javascript_obj["qualifying_members"] = family_members;
+
+    console.log(family_members);
+    console.log(doc_javascript_obj);
+    return doc_javascript_obj
+    }
+}
+
+HouseholdSchema.methods.evalElderBonus = function evalElderBonus() {
+    if (this.household_type != "HDB") {
+        return
+    }
+
+    let hasMemberAbove55 = false;
+    let valid_members = [];
+
+    this.family_members.forEach(member => {
+        member_DOB_date = parse_date(member.DOB);
+        member_age = compute_date_diff(member_DOB_date, new Date(), "year");
+
+        if (member_age > 55) {
+            hasMemberAbove55 = true;
+        }
+        if (member_age >= 55) {
+            valid_members.push(member.toObject());
+        }
+    });
+
+    if (hasMemberAbove55) {
+        let doc_javascript_obj = this.toObject();
+        doc_javascript_obj["qualifying_members"] = valid_members;
+        return doc_javascript_obj;
+    }
+}
+
+HouseholdSchema.methods.evalBabySunshineGrant = function evalBabySunshineGrant() {
+    let valid_members = [];
+
+    this.family_members.forEach(member => {
+        member_DOB_date = parse_date(member.DOB);
+        member_age_month = compute_date_diff(member_DOB_date, new Date(), "month");
+
+        if (member_age_month < 8) {
+            valid_members.push(member.toObject());
+        }
+    });
+
+    if (valid_members.length > 0) {
+        let doc_javascript_obj = this.toObject();
+        doc_javascript_obj["qualifying_members"] = valid_members;
+        return doc_javascript_obj;
+    }
+}
+
+HouseholdSchema.methods.evalYOLOGSTGrant = function evalYOLOGSTGrant() {
+    if (this.household_type != "HDB") {
+        return
+    }
+    
+    if (this.household_income >= 100000) {
+        return
+    }
+
+    let doc_javascript_obj = this.toObject();
+    let family_members = doc_javascript_obj["family_members"].slice();
+    doc_javascript_obj["qualifying_members"] = family_members;
+    return doc_javascript_obj;
+}
 
 module.exports = {
     "Household" : mongoose.model('Household', HouseholdSchema),
